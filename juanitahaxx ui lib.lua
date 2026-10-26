@@ -45,10 +45,10 @@ local Library = {
         Themes = "/Themes"
     },
 
-    FontSize = 14,
+    FontSize = 13,
 
     Animation = {
-        Time = 0.3,
+        Time = 0.2,
         Style = "Quint",
         Direction = "Out"
     },
