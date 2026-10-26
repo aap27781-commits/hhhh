@@ -45,7 +45,7 @@ local Library = {
         Themes = "/Themes"
     },
 
-    FontSize = 12,
+    FontSize = 14,
 
     Animation = {
         Time = 0.2,
@@ -231,8 +231,8 @@ local Library = {
             return Font.new(getcustomasset(`{Library.Directory .. Library.Folders.Assets}/{Name}.font`))
         end
 
-        Library.Font = CustomFont:New("ProggyTiny", 400, "Regular", {
-            Id = "ProggyTiny",
+        Library.Font = CustomFont:New("ProggyTinyTT", 400, "Regular", {
+            Id = "ProggyTinyTT",
             Url = "https://github.com/i77lhm/storage/blob/main/fonts/ProggyTiny.ttf"
         })
     end
