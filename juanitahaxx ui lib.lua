@@ -231,7 +231,7 @@ local Library = {
             return Font.new(getcustomasset(`{Library.Directory .. Library.Folders.Assets}/{Name}.font`))
         end
 
-        Library.Font = CustomFont:New("TahomaXP", 400, "Regular", {
+        Library.Font = CustomFont:New("ProggyTiny", 400, "Regular", {
             Id = "ProggyTiny",
             Url = "https://github.com/i77lhm/storage/blob/main/fonts/ProggyTiny.ttf"
         })
