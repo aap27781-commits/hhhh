@@ -36,7 +36,7 @@ local Mouse = cloneref(LocalPlayer:GetMouse())
 
 local Library = { 
     Flags = { },
-    MenuKeybind = tostring(Enum.KeyCode.X), -- has to be a string
+    MenuKeybind = tostring(Enum.KeyCode.Insert), -- has to be a string
 
     Directory = "MissSense",
     Folders = {
@@ -45,7 +45,7 @@ local Library = {
         Themes = "/Themes"
     },
 
-    FontSize = 13,
+    FontSize = 12,
 
     Animation = {
         Time = 0.2,
