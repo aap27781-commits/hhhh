@@ -232,8 +232,8 @@ local Library = {
         end
 
         Library.Font = CustomFont:New("TahomaXP", 400, "Regular", {
-            Id = "TahomaXP",
-            Url = "https://github.com/sametexe001/luas/raw/refs/heads/main/fonts/windows-xp-tahoma.ttf"
+            Id = "ProggyTiny",
+            Url = "https://github.com/i77lhm/storage/blob/main/fonts/ProggyTiny.ttf"
         })
     end
 
