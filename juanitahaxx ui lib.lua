@@ -242,11 +242,11 @@ local CustomFont = {} do
         return Font.new(getcustomasset(FontJson))
     end
 
-    Library.Font = CustomFont:New("ProggyTiny", 400, "Regular", {
-        Id = "ProggyTiny",
-        Url = "https://raw.githubusercontent.com/i77lhm/storage/main/fonts/ProggyTiny.ttf"
-    })
-end
+        Library.Font = CustomFont:New("TahomaXP", 400, "Regular", {
+            Id = "TahomaXP",
+            Url = "https://github.com/sametexe001/luas/raw/refs/heads/main/fonts/windows-xp-tahoma.ttf"
+        })
+    end
 
     Library.Exit = function(Self)
         for _, Connection in Library.Connections do 
