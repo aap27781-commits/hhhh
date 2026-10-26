@@ -208,34 +208,45 @@ local Library = {
 
     Library.Theme = Themes.Preset
 
-    -- Custom Font
-    local CustomFont = { } do
-        function CustomFont:New(Name, Weight, Style, Data)
-            if not isfile(Data.Id) then 
-                writefile(Data.Id, game:HttpGet(Data.Url))
+-- Custom Font
+local CustomFont = {} do
+    function CustomFont:New(Name, Weight, Style, Data)
+        local FontPath = Library.Directory .. Library.Folders.Assets .. "/" .. Name .. ".ttf"
+        local FontJson = Library.Directory .. Library.Folders.Assets .. "/" .. Name .. ".font"
+
+        -- Download font if missing
+        if not isfile(FontPath) then
+            local Success, Result = pcall(function()
+                return game:HttpGet(Data.Url)
+            end)
+
+            if not Success or not Result or #Result < 1000 then
+                error("Failed to download font: " .. tostring(Result))
             end
 
-            local Data = {
-                name = Name,
-                faces = {
-                    {
-                        name = Name,
-                        weight = Weight,
-                        style = Style,
-                        assetId = getcustomasset(Data.Id)
-                    }
-                }
-            }
-
-            writefile(`{Library.Directory .. Library.Folders.Assets}/{Name}.font`, HttpService:JSONEncode(Data))
-            return Font.new(getcustomasset(`{Library.Directory .. Library.Folders.Assets}/{Name}.font`))
+            writefile(FontPath, Result)
         end
 
-Library.Font = CustomFont:New("ProggyTiny", 400, "Regular", {
-    Id = "ProggyTiny",
-    Url = "https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/ProggyTiny.ttf"
-})
+        local FontData = {
+            name = Name,
+            faces = {{
+                name = Name,
+                weight = Weight,
+                style = "normal",
+                assetId = getcustomasset(FontPath)
+            }}
+        }
+
+        writefile(FontJson, HttpService:JSONEncode(FontData))
+
+        return Font.new(getcustomasset(FontJson))
     end
+
+    Library.Font = CustomFont:New("ProggyTiny", 400, "Regular", {
+        Id = "ProggyTiny",
+        Url = "https://raw.githubusercontent.com/i77lhm/storage/main/fonts/ProggyTiny.ttf"
+    })
+end
 
     Library.Exit = function(Self)
         for _, Connection in Library.Connections do 
