@@ -42,8 +42,7 @@ local Library = {
     Folders = {
         Assets = "/Assets",
         Configs = "/Configs",
-        Themes = "/Themes",
-        Luas = "/Luas"
+        Themes = "/Themes"
     },
 
     FontSize = 12,
