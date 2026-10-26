@@ -208,39 +208,28 @@ local Library = {
 
     Library.Theme = Themes.Preset
 
--- Custom Font
-local CustomFont = {} do
-    function CustomFont:New(Name, Weight, Style, Data)
-        local FontPath = Library.Directory .. Library.Folders.Assets .. "/" .. Name .. ".ttf"
-        local FontJson = Library.Directory .. Library.Folders.Assets .. "/" .. Name .. ".font"
-
-        -- Download font if missing
-        if not isfile(FontPath) then
-            local Success, Result = pcall(function()
-                return game:HttpGet(Data.Url)
-            end)
-
-            if not Success or not Result or #Result < 1000 then
-                error("Failed to download font: " .. tostring(Result))
+    -- Custom Font
+    local CustomFont = { } do
+        function CustomFont:New(Name, Weight, Style, Data)
+            if not isfile(Data.Id) then 
+                writefile(Data.Id, game:HttpGet(Data.Url))
             end
 
-            writefile(FontPath, Result)
-        end
-
-        local FontData = {
-            name = Name,
-            faces = {{
+            local Data = {
                 name = Name,
-                weight = Weight,
-                style = "normal",
-                assetId = getcustomasset(FontPath)
-            }}
-        }
+                faces = {
+                    {
+                        name = Name,
+                        weight = Weight,
+                        style = Style,
+                        assetId = getcustomasset(Data.Id)
+                    }
+                }
+            }
 
-        writefile(FontJson, HttpService:JSONEncode(FontData))
-
-        return Font.new(getcustomasset(FontJson))
-    end
+            writefile(`{Library.Directory .. Library.Folders.Assets}/{Name}.font`, HttpService:JSONEncode(Data))
+            return Font.new(getcustomasset(`{Library.Directory .. Library.Folders.Assets}/{Name}.font`))
+        end
 
         Library.Font = CustomFont:New("TahomaXP", 400, "Regular", {
             Id = "TahomaXP",
