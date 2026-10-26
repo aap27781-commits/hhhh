@@ -42,7 +42,7 @@ local Library = {
     Folders = {
         Assets = "/Assets",
         Configs = "/Configs",
-        Themes = "/Themes"
+        Themes = "/Themes",
         Luas = "/Luas"
     },
 
