@@ -231,9 +231,9 @@ local Library = {
             return Font.new(getcustomasset(`{Library.Directory .. Library.Folders.Assets}/{Name}.font`))
         end
 
-        Library.Font = CustomFont:New("TahomaXP", 400, "Regular", {
-            Id = "TahomaXP",
-            Url = "https://github.com/sametexe001/luas/raw/refs/heads/main/fonts/windows-xp-tahoma.ttf"
+        Library.Font = CustomFont:New("tahoma", 400, "Regular", {
+            Id = "tahoma",
+            Url = "https://github.com/sametexe001/luas/blob/main/fonts/tahoma.ttf"
         })
     end
 
